@@ -4,7 +4,7 @@ import App, { replaceCamelWithSpaces } from './App'
 test('initial conditions', () => {
   render(<App />)
 
-  const button = screen.getByRole('button', { name: 'Change to blue' })
+  const button = screen.getByRole('button', { name: 'Change to Midnight Blue' })
   expect(button).toBeEnabled()
 
   const checkbox = screen.getByRole('checkbox')
@@ -14,21 +14,21 @@ test('initial conditions', () => {
 test('button changes from blue to red when clicked', () => {
   render(<App />)
 
-  const button = screen.getByRole('button', { name: 'Change to blue' })
+  const button = screen.getByRole('button', { name: 'Change to Midnight Blue' })
 
-  expect(button).toHaveStyle({ backgroundColor: 'red' })
+  expect(button).toHaveStyle({ backgroundColor: 'MediumVioletRed' })
 
   fireEvent.click(button)
 
-  expect(button).toHaveStyle({ backgroundColor: 'blue' })
-  expect(button).toHaveTextContent('Change to red')
+  expect(button).toHaveStyle({ backgroundColor: 'MidnightBlue' })
+  expect(button).toHaveTextContent('Change to Medium Violet Red')
 })
 
 test('checkbox controls the button disabled prop', () => {
   render(<App />)
 
   const checkbox = screen.getByRole('checkbox', { name: 'Disable button' })
-  const button = screen.getByRole('button', { name: 'Change to blue' })
+  const button = screen.getByRole('button', { name: 'Change to Midnight Blue' })
 
   fireEvent.click(checkbox)
   expect(button).not.toBeEnabled()
@@ -41,22 +41,22 @@ test('button turns gray when disabled', () => {
   render(<App />)
 
   const checkbox = screen.getByRole('checkbox', { name: 'Disable button' })
-  const button = screen.getByRole('button', { name: 'Change to blue' })
+  const button = screen.getByRole('button', { name: 'Change to Midnight Blue' })
 
   fireEvent.click(checkbox)
   expect(button).toHaveStyle({ backgroundColor: 'gray' })
 
   fireEvent.click(checkbox)
-  expect(button).toHaveStyle({ backgroundColor: 'red' })
+  expect(button).toHaveStyle({ backgroundColor: 'MediumVioletRed' })
 
   fireEvent.click(button)
-  expect(button).toHaveStyle({ backgroundColor: 'blue' })
+  expect(button).toHaveStyle({ backgroundColor: 'MidnightBlue' })
 
   fireEvent.click(checkbox)
   expect(button).toHaveStyle({ backgroundColor: 'gray' })
 
   fireEvent.click(checkbox)
-  expect(button).toHaveStyle({ backgroundColor: 'blue' })
+  expect(button).toHaveStyle({ backgroundColor: 'MidnightBlue' })
 })
 
 describe('replaceCamelWithSpaces', () => {

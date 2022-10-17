@@ -1,33 +1,21 @@
 import { useState } from 'react';
 import './App.css';
 
-const redStyle = {
-  backgroundColor: 'red',
-  text: 'Change to blue'
-}
-
-const blueStyle = {
-  backgroundColor: 'blue',
-  text: 'Change to red'
-}
 
 function App() {
-  const [buttonStyle, setButtonStyle] = useState(redStyle)
+  const [buttonColor, setButtonColor] = useState('MediumVioletRed')
   const [disabled, setDisabled] = useState(false)
 
-  function toggleButtonColor() {
-    const newButtonStyle = buttonStyle.backgroundColor === 'red' ? blueStyle : redStyle
-    setButtonStyle(newButtonStyle)
-  }
+  const newButtonColor = buttonColor === 'MediumVioletRed' ? 'MidnightBlue' : 'MediumVioletRed'
 
   return (
     <div>
       <button
-        style={{ backgroundColor: disabled ? 'gray' : buttonStyle.backgroundColor }}
-        onClick={toggleButtonColor}
+        style={{ backgroundColor: disabled ? 'gray' : buttonColor }}
+        onClick={() => setButtonColor(newButtonColor)}
         disabled={disabled}
       >
-        {buttonStyle.text}
+        Change to {replaceCamelWithSpaces(newButtonColor)}
       </button>
 
       <input 
