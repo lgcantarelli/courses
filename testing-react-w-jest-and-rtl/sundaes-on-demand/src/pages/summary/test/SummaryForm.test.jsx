@@ -1,4 +1,5 @@
 import { screen, render, fireEvent } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import SummaryForm from '../SummaryForm'
 
 describe('SummaryForm', () => {
@@ -9,13 +10,15 @@ describe('SummaryForm', () => {
     expect(getButton()).toBeDisabled()
   })
 
-  test('ticking the checkbox enable/disable to confirm the order', () => {
+  test('ticking the checkbox enable/disable to confirm the order', async () => {
+    const user = userEvent.setup()
+    
     render(<SummaryForm />)
 
-    fireEvent.click(getCheckbox())
+    await user.click(getCheckbox())
     expect(getButton()).toBeEnabled()
 
-    fireEvent.click(getCheckbox())
+    await user.click(getCheckbox())
     expect(getButton()).toBeDisabled()
   })
 
