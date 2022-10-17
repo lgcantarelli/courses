@@ -15,7 +15,7 @@ function App() {
   const [buttonStyle, setButtonStyle] = useState(redStyle)
   const [disabled, setDisabled] = useState(false)
 
-  function toggleButtonStyle() {
+  function toggleButtonColor() {
     const newButtonStyle = buttonStyle.backgroundColor === 'red' ? blueStyle : redStyle
     setButtonStyle(newButtonStyle)
   }
@@ -23,8 +23,8 @@ function App() {
   return (
     <div>
       <button
-        style={{ backgroundColor: buttonStyle.backgroundColor }}
-        onClick={toggleButtonStyle}
+        style={{ backgroundColor: disabled ? 'gray' : buttonStyle.backgroundColor }}
+        onClick={toggleButtonColor}
         disabled={disabled}
       >
         {buttonStyle.text}
@@ -34,7 +34,7 @@ function App() {
         type='checkbox'
         id='checkbox'
         value={disabled}
-        onChange={e => { setDisabled(e.target.checked) }}
+        onChange={e => setDisabled(e.target.checked)}
       />
       <label htmlFor='checkbox'>Disable button</label>
     </div>
