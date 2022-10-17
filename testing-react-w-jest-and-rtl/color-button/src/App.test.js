@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react'
-import App from './App'
+import App, { replaceCamelWithSpaces } from './App'
 
 test('initial conditions', () => {
   render(<App />)
@@ -57,4 +57,18 @@ test('button turns gray when disabled', () => {
 
   fireEvent.click(checkbox)
   expect(button).toHaveStyle({ backgroundColor: 'blue' })
+})
+
+describe('replaceCamelWithSpaces', () => {
+  test('no replacement when no inner capital letters', () => {
+    expect(replaceCamelWithSpaces('Blue')).toBe('Blue')
+  })
+
+  test('replaces one inner capital letter', () => {
+    expect(replaceCamelWithSpaces('MidnightBlue')).toBe('Midnight Blue')
+  })
+
+  test('replaces many inner capital letter', () => {
+    expect(replaceCamelWithSpaces('MediumVioletRed')).toBe('Medium Violet Red')
+  })
 })
