@@ -36,11 +36,6 @@ https://micku7zu.github.io/vanilla-tilt.js/index.html
   min-height: 260px;
 }
 
-.game ol,
-.game ul {
-  padding-left: 30px;
-}
-
 .board-row:after {
   clear: both;
   content: '';
@@ -49,6 +44,7 @@ https://micku7zu.github.io/vanilla-tilt.js/index.html
 
 .status {
   margin-bottom: 10px;
+  margin-left: 40px;
 }
 
 .restart {

@@ -12,6 +12,7 @@ function Name({name, onNameChange}) {
   )
 }
 
+// 🐨 accept `animal` and `onAnimalChange` props to this component
 function FavoriteAnimal({ animal, onAnimalChange }) {
   return (
     <div>
@@ -19,25 +20,26 @@ function FavoriteAnimal({ animal, onAnimalChange }) {
       <input
         id="animal"
         value={animal}
-        onChange={event => onAnimalChange(event.target.value)}
+        onChange={onAnimalChange}
       />
     </div>
   )
 }
 
+// 🐨 uncomment this
 function Display({name, animal}) {
   return <div>{`Hey ${name}, your favorite animal is: ${animal}!`}</div>
 }
 
 function App() {
-  const [animal, setAnimal] = React.useState('Cat')
   const [name, setName] = React.useState('')
-  
+  const [animalName, setAnimalName] = React.useState('')
+
   return (
     <form>
       <Name name={name} onNameChange={event => setName(event.target.value)} />
-      <FavoriteAnimal animal={animal} onAnimalChange={setAnimal}/>
-      <Display name={name} animal={animal} />
+      <FavoriteAnimal animal={animalName} onAnimalChange={event => setAnimalName(event.target.value)}/>
+      <Display animal={animalName} name={name} />
     </form>
   )
 }
